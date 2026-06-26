@@ -57,10 +57,12 @@ router.post("/login", async (req, res) => {
                 message: "Invalid Password"
             });
         }
-
         res.json({
-            message: "Login Successful"
-        });
+    message: "Login Successful",
+    user: {
+        username: user.username
+    }
+});
 
     } catch (err) {
         res.status(500).json(err);
