@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini CRM Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+rel="stylesheet"
+/>
+
+</head>
+
+<body>
+
+<div class="container">
+    <div style="text-align:right; margin-bottom:20px;">
+
+<button onclick="logout()">
+
+Logout
+
+</button>
+
+</div>
+
+    <header>
+        <h1>Client Lead Management System</h1>
+        <p>Mini CRM Dashboard</p>
+    </header>
+
+    <!-- Dashboard Cards -->
+
+    <div class="cards">
+
+        <div class="card">
+            <h2 id="totalLeads">0</h2>
+            <p>Total Leads</p>
+        </div>
+
+        <div class="card">
+            <h2 id="newLeads">0</h2>
+            <p>New Leads</p>
+        </div>
+
+        <div class="card">
+            <h2 id="contactedLeads">0</h2>
+            <p>Contacted</p>
+        </div>
+
+        <div class="card">
+            <h2 id="convertedLeads">0</h2>
+            <p>Converted</p>
+        </div>
+
+    </div>
+
+    <!-- Lead Form -->
+
+   <section class="form-section">
+
+    <h2>Add New Lead</h2>
+
+<form id="leadForm">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Client Name"
+                required
+            >
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Email Address"
+                required
+            >
+
+            <input
+                type="text"
+                id="phone"
+                placeholder="Phone Number"
+                required
+            >
+
+            <input
+                type="text"
+                id="source"
+                placeholder="Lead Source"
+                required
+            >
+
+            <select id="status">
+
+                <option value="New">New</option>
+                <option value="Contacted">Contacted</option>
+                <option value="Converted">Converted</option>
+
+            </select>
+             <label for="followUp">Follow-up Date</label>
+
+            <input
+                  type="date"
+                  id="followUp"
+            >
+
+            <textarea
+                id="notes"
+                placeholder="Notes"
+            ></textarea>
+           
+            <button type="submit">
+                Add Lead
+            </button>
+
+        </form>
+
+    </section>
+
+    <!-- Lead Table -->
+
+    <section class="table-section">
+
+        <h2>Lead Records</h2>
+<input
+    type="text"
+    id="search"
+    placeholder="🔍 Search by Name, Email or Phone..."
+>
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Source</th>
+                    <th>Status</th>
+                    <th>Notes</th>
+                    <th>Follow-up</th>
+                    <th>Actions</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="leadTableBody">
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
