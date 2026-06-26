@@ -1,42 +1,43 @@
 const form = document.getElementById("loginForm");
 
-const users = [
-    {
-        username: "admin",
-        password: "admin123"
-    },
-    {
-        username: "lasya",
-        password: "lasya123"
-    },
-    {
-        username: "thrisalini",
-        password: "crm123"
-    }
-];
-
-form.addEventListener("submit", function(e) {
-
+form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
     const username = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value.trim();
 
-    const validUser = users.find(
-        user => user.username === username && user.password === password
-    );
+    try {
 
-    if (validUser) {
+        const response = await fetch("https://future-fs-02-wlb7.onrender.com/api/users/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username,
+                password
+            })
+        });
 
-        localStorage.setItem("loggedIn", "true");
-        localStorage.setItem("username", validUser.username);
+        const data = await response.json();
 
-        window.location.href = "index.html";
+        if (response.ok) {
 
-    } else {
+            localStorage.setItem("loggedIn", "true");
+            localStorage.setItem("username", data.user.username);
+
+            window.location.href = "index.html";
+
+        } else {
+
+            document.getElementById("error").innerText = data.message;
+
+        }
+
+    } catch (err) {
 
         document.getElementById("error").innerText =
-            "Invalid Username or Password";
+            "Unable to connect to server.";
 
     }
 
