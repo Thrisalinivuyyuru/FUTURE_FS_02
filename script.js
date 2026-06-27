@@ -1,7 +1,7 @@
 if(localStorage.getItem("loggedIn") !== "true"){
     window.location.href = "login.html";
 }
-const API_URL = "http://localhost:5000/api/leads";
+const API_URL = "https://future-fs-02-wlb7.onrender.com/api/leads";
 let editId = null;
 const leadForm = document.getElementById("leadForm");
 
@@ -132,7 +132,9 @@ async function editLead(id) {
  
         const leads = await response.json();
 
-leads.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+leads.sort((a, b) => new 
+Date(b.createdAt) - new 
+Date(a.createdAt));
 
 tableBody.innerHTML = ""; // <-- This line is missing
 
